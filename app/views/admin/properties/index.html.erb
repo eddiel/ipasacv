@@ -1,0 +1,39 @@
+<%- model_class = Property.new.class -%>  
+  <div class="page-header">
+  <h1>Listado de Propiedades</h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:nombre) %></th>
+      <th><%= model_class.human_attribute_name(:num_ext) %></th>
+      <th><%= model_class.human_attribute_name(:direccion) %></th>
+      <th><%= model_class.human_attribute_name(:ofertada) %></th>
+      <th>Localidad</th>
+      <th>Opciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @properties.each do |property| %>
+      <tr>
+        <td><%=  link_to property.nombre, property_path(property) %></td>
+        <td><%= property.num_ext %></td>
+        <td><%= property.direccion %></td>
+        <td><% if property.ofertada == true %>
+          <i class="icon-ok"></i>
+          <% else %>
+          <i class="icon-remove"></i>
+          <% end %>
+        </td>
+        <td><%= property.locality.nombre %></td>
+        <td>
+          <%= link_to 'Mostrar', property_path(property), {:remote => true , 'data-toggle' =>  "modal", 'data-target' => "#modal-window", 'data-keyboard' => true , 'data-backdrop' => true , :class => "btn btn-mini btn-success"} %>
+          <%= link_to 'Editar', edit_property_path(property) , {:remote => true , 'data-toggle' =>  "modal", 'data-target' => "#modal-window", 'data-keyboard' => true , 'data-backdrop' => true , :class => "btn btn-mini btn-primary"}  %>
+          <%= link_to 'Eliminar', property_path(property), :method => :delete,:confirm => '¿Estas Seguro?', :class => 'btn btn-mini btn-danger' %>
+
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

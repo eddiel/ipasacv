@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nombre: MyString
+
+two:
+  nombre: MyString
+# == Schema Information
+#
+# Table name: localities
+#
+#  id         :integer         not null, primary key
+#  nombre     :string(255)
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
+#
+
